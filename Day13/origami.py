@@ -29,10 +29,10 @@ class Origami:
             self.fold(i[0], i[1])
         
         x = np.array([p[0] for p in self.points])
-        y = np.array([p[1] for p in self.points])
+        y = np.array([p[1]*(-1) for p in self.points])
 
         plt.scatter(x, y)
-        plt.show() #upside down image, need to flip over the y axis but it was readable
+        plt.show()
 
     def countUnique(self):
         unique_points = []

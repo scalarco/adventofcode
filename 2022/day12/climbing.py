@@ -1,6 +1,6 @@
 import sys
 from collections import deque
-class PathFinder:
+class Climber:
     def __init__(self):
         self.input = 'input.txt'
         self.climbmap = []
@@ -54,20 +54,13 @@ class PathFinder:
         if not matrix or not len(matrix):
             return
      
-        # `N × N` matrix
-        N = len(matrix)
-        M= len(matrix[0])
+        N = self.total_rows
+        M= self.total_columns
      
         # create a queue and enqueue the first node
-        q = deque()
-     
-        # (x, y) represents coordinates of a cell in the matrix
-        # `level` stores the distance of a current node from the source node
-        # (i.e., BFS level)
-     
+        q = deque()     
         q.append((x, y, level))
      
-        # set to check if the matrix cell is visited before or not
         visited = set()
         visited.add((x, y))
      
@@ -103,19 +96,4 @@ class PathFinder:
      
         # return a negative number if the path is not possible
         return -1
-
-# A queue node used in BFS
-class Node:
-    # (x, y) represents coordinates of a cell in the matrix
-    # maintain a parent node for the printing path
-    def __init__(self, x, y, parent=None):
-        self.x = x
-        self.y = y
-        self.parent = parent
- 
-    def __repr__(self):
-        return str((self.x, self.y))
- 
-    def __eq__(self, other):
-        return self.x == other.x and self.y == other.y
 
